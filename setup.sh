@@ -19,17 +19,20 @@ sudo apt install python3.10-venv
 python3.10 -m venv myENV --system-site-packages
 source ~/myENV/bin/activate
 cd myENV
-
-
+python3.10 -m pip install --upgrade 'numpy<1.25.0'
+python3.10 -m pip install onnx
 #manually check if this is the latest
-wget https://developer.download.nvidia.com/compute/redist/jp/v60/pytorch/torch-2.4.0a0+f70bd71a48.nv24.06.15634931-cp310-cp310-linux_aarch64.whl
+wget https://developer.download.nvidia.com/compute/redist/jp/v60/pytorch/torch-2.4.0a0+07cecf4168.nv24.05.14710581-cp310-cp310-linux_aarch64.whl
 
 wget https://developer.download.nvidia.com/compute/redist/jp/v60/tensorflow/tensorflow-2.16.1+nv24.06-cp310-cp310-linux_aarch64.whl
 
-
-
 sudo apt install libhdf5-dev
 
-pip install tensorflow-2.16.1+nv24.06-cp310-cp310-linux_aarch64.whl
+python3.10 -m pip install torch-2.4.0a0+07cecf4168.nv24.05.14710581-cp310-cp310-linux_aarch64.whl
 
-pip install torch-2.4.0a0+f70bd71a48.nv24.06.15634931-cp310-cp310-linux_aarch64.whl
+#Test is torch has installed properly
+python3.10 -c "import torch;print(torch.cuda.is_available())"
+
+python3.10 -m pip install tensorflow-2.16.1+nv24.06-cp310-cp310-linux_aarch64.whl
+
+
