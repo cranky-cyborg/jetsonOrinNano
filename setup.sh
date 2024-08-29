@@ -51,7 +51,7 @@ python3.10 -m pip install torch-2.4.0a0+07cecf4168.nv24.05.14710581-cp310-cp310-
 git clone https://github.com/pytorch/vision torchvision
 cd torchvision
 export USE_CUDA=1 USE_CUDNN=1 USE_MKLDNN=1 TORCH_CUDA_ARCH_LIST="8.7" FORCE_CUDA=1 FORCE_MPS=1
-sudo apt-get -y install libavutil-dev libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libswresample-dev libpostproc-dev libjpeg-dev libpng-dev libopenblas-base libopenmpi-dev
+sudo apt-get -y install ffmpeg libavutil-dev libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libswresample-dev libpostproc-dev libjpeg-dev libpng-dev libopenblas-base libopenmpi-dev
 #ffmpeg version from nvidia has a conflict with libpostproc-dev package, and if ffmpeg is installed it impacts other libraries mentioned above.
 #sudo apt install ffmpeg
 
