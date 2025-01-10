@@ -4,6 +4,10 @@
 #{remove-sudo-password}echo " 
 #{remove-sudo-password}${USER} ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo;
 
+#installing pip
+sudo apt install python3-pip
+sudo apt install python3-venv
+
 #Below is a placeholder for Docker.sock permission issue
 #{docker-sock}sudo chmod 666 /var/run/docker.sock;
 PWD=$(pwd)
@@ -15,7 +19,7 @@ python3.10 -m pip install --upgrade pip
 python3.10 -m pip install --upgrade setuptools
 python3.10 -m pip install --upgrade wheel
 python3.10 -m pip install virtualenv
-sudo apt install python3.10-venv
+
 python3.10 -m venv myENV --system-site-packages
 source ~/myENV/bin/activate
 cd myENV
@@ -54,6 +58,10 @@ export USE_CUDA=1 USE_CUDNN=1 USE_MKLDNN=1 TORCH_CUDA_ARCH_LIST="8.7" FORCE_CUDA
 sudo apt-get -y install ffmpeg libavutil-dev libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libswresample-dev libpostproc-dev libjpeg-dev libpng-dev libopenblas-base libopenmpi-dev
 #ffmpeg version from nvidia has a conflict with libpostproc-dev package, and if ffmpeg is installed it impacts other libraries mentioned above.
 #sudo apt install ffmpeg
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/arm64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get update
+sudo apt-get -y install libcusparselt0 libcusparselt-dev
 
 python3.10 -m pip install ninja ffmpeg pynvjpeg
 python3.10 setup.py install
