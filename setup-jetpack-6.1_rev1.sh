@@ -8,9 +8,8 @@ ${USER} ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo;
 PWD=$(pwd)
 
 #update packages
-apt update 
-apt upgrade
+apt update && apt upgrade
 
 #installing pip
-apt install python3-pip
-apt install python3-venv
+apt install python3-pip && python3-venv
+
